@@ -43,6 +43,7 @@ class MainActivity : AppCompatActivity() {
             "historyDB").build()
 
 
+
         var testHistory_1 = MyHistory(0, "my-name", "none")
         myHistoryDatabase.myHistoryDao().set(testHistory_1)
     }
