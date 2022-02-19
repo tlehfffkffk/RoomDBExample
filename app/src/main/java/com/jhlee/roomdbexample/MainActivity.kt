@@ -9,7 +9,10 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
+import androidx.room.Room
+import androidx.room.RoomDatabase
 import com.jhlee.roomdbexample.databinding.ActivityMainBinding
+import com.jhlee.roomdbexample.model.MyHistory
 
 class MainActivity : AppCompatActivity() {
 
@@ -32,6 +35,16 @@ class MainActivity : AppCompatActivity() {
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show()
         }
+
+
+        var myHistoryDatabase = Room.databaseBuilder(
+            applicationContext,
+            HistoryDatabase::class.java,
+            "historyDB").build()
+
+
+        var testHistory_1 = MyHistory(0, "my-name", "none")
+        myHistoryDatabase.myHistoryDao().set(testHistory_1)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
